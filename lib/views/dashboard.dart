@@ -6,7 +6,6 @@ import 'package:flutter_application_1/views/experience.dart';
 import 'package:flutter_application_1/views/mydrawer.dart';
 import 'package:flutter_application_1/views/projects.dart';
 import 'package:flutter_application_1/views/skills.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
