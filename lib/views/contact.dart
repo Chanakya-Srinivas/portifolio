@@ -36,6 +36,8 @@ class Contact extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const SizedBox(width: 20,),
+                        const Icon(Icons.person,size: 15,),
+                        const SizedBox(width: 10,),
                         Text('Chankaya Srinivas Korada', style: TextStyle(fontSize: min((15 / 500 * MediaQuery.sizeOf(context).width), 15),color: Colors.black),),
                       ],
                     ),

@@ -7,17 +7,10 @@ import 'package:flutter_application_1/views/mydrawer.dart';
 import 'package:flutter_application_1/views/projects.dart';
 import 'package:flutter_application_1/views/skills.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class Dashboard extends StatelessWidget{
 
   const Dashboard({super.key});
-
-//   @override
-//   _Dashboard_2 createState() => _Dashboard_2();
-// }
-
-// class _Dashboard_2 extends State<Dashboard>  {
 
   _launchURL(String url) async {
     if (await canLaunchUrl(Uri.parse(url))) {
@@ -30,7 +23,7 @@ class Dashboard extends StatelessWidget{
   _moveTo(int index){
     GlobalObjectKey key = GlobalObjectKey(index);
     Scrollable.ensureVisible(key.currentContext!,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       alignment: .05, // 0 mean, scroll to the top, 0.5 mean, half
       curve: Curves.easeInOutCubic);
   }
@@ -41,10 +34,30 @@ class Dashboard extends StatelessWidget{
     bool check = MediaQuery.sizeOf(context).width <= 500;
     // dataKey.
     return 
-    // MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      // home:
        Scaffold(
+        // floatingActionButton: 
+        // Container(
+        //   width: 40.0,
+        //   height: 40.0,
+        //   child: RawMaterialButton(
+        //       highlightColor: const Color.fromARGB(255, 205, 209, 211),
+        //       shape: const CircleBorder(),
+        //       elevation: 0.0,
+        //       child: const Icon(Icons.keyboard_arrow_up_outlined),
+        //       onPressed: () {
+        //         _moveTo(0);
+        //       },
+        //     ),
+        //   ),
+        //  FloatingActionButton.small(
+        //   onPressed: () {  
+        //     _moveTo(0);
+        //   },
+        //   hoverColor: const Color.fromARGB(255, 227, 231, 233),
+        //   backgroundColor: Colors.transparent,
+        //   elevation: 0.01,
+        //   child: const Icon(Icons.arrow_drop_up_rounded),
+        // ),
         appBar: AppBar(
           toolbarHeight: 80,
           // leading: MediaQuery.sizeOf(context).width <= 500 ? null :Text('Chanakya.Dev'),
@@ -70,10 +83,6 @@ class Dashboard extends StatelessWidget{
             const Spacer(),
             TextButton(
               onPressed: () {
-                // ctr.scrollTo(
-                //   index: 1,
-                //   duration: const Duration(milliseconds: 1000),
-                //   curve: Curves.bounceIn);
                 _moveTo(2);
               }, 
               child: Text('Experience',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
@@ -81,10 +90,6 @@ class Dashboard extends StatelessWidget{
             const Spacer(),
             TextButton(
               onPressed: () {
-                // ctr.scrollTo(
-                //   index: 2,
-                //   duration: const Duration(milliseconds: 1000),
-                //   curve: Curves.bounceIn);
                 _moveTo(3);
               }, 
               child: Text('Projects',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
@@ -92,11 +97,6 @@ class Dashboard extends StatelessWidget{
             const Spacer(),
             TextButton(
               onPressed: () {
-              // Uri emailLaunchUri = Uri(
-              //   scheme: 'mailto',
-              //   path: 'ckorada@hawk.iit.edu',
-              // );
-              // _launchURL(emailLaunchUri.toString());
               _moveTo(4);
             }, 
               child: const Text('Contact',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),

@@ -20,6 +20,7 @@ class About extends StatelessWidget{
   Widget build(BuildContext context) {
     bool check = MediaQuery.sizeOf(context).width > 500;
     return Container(
+            height: check ? 300 : 400 ,
             key: GlobalObjectKey(index),
             child: Flex(
               direction: check ? Axis.horizontal : Axis.vertical,

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utils/helper.dart';
 
 class Projects extends StatefulWidget{
 
@@ -18,10 +19,48 @@ class _Projects extends State<Projects>{
 
   List<bool> onHover = List<bool>.filled(4, false);
 
-  Widget projectCard(String image, String projectName, String languages, String url, double radius, double screenWidth,int index){
+  Widget projectCard(String image, String image2, String projectName, String projectDescription, String languages, String url, double radius, double screenWidth,int index){
     return InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-          onTap: () => widget.onTap(url),
+          onTap: () {
+            showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                scrollable: true,
+                shape: const RoundedRectangleBorder(borderRadius:BorderRadius.all(Radius.circular(20.0))),
+                title:Row(children: [
+                    ImageIcon(AssetImage(image2)),
+                    SizedBox(width: 10,),
+                    Container(
+                      width: min(MediaQuery.of(context).size.width/2,400),
+                      child: Flexible(child: Text(projectName,maxLines: 2,)),
+                    )
+                    
+                  ],
+                ),
+                content: Builder(
+                  builder: (context) {
+                    return SizedBox(
+                      height: min(MediaQuery.of(context).size.height/2,110),
+                      width: min(MediaQuery.of(context).size.width/2,400),
+                      child: SingleChildScrollView(
+                        child: Text(projectDescription,maxLines: 20,),
+                      ),
+                    );
+                  },
+                ),
+                actions: [
+                  Helper.iconFunc(context, 'Git', 'assets/git.png', url, widget.onTap),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],);
+                // widget.onTap(url);
+                },
+              );
+            },
           onHover: (value) {
             setState(() {
               onHover[index] = value;
@@ -72,9 +111,9 @@ class _Projects extends State<Projects>{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 direction: screenWidth < 600 ? Axis.vertical : Axis.horizontal,
                 children: [
-                  projectCard('assets/fingertips.png', 'FingerTips', 'Flutter, MySQL', 'https://github.com/Chanakya-Srinivas/FingerTips', 50, screenWidth,0),
+                  projectCard('assets/fingertips.png', 'assets/fingertips2.png', 'FingerTips' , 'Fingertips is a go-to destination for staying informed and up-to-date with the latest news and happenings around the world. With a sleek and intuitive design, this app offers a seamless experience for users who crave real-time information tailored to their interests.', 'Flutter, MySQL', 'https://github.com/Chanakya-Srinivas/FingerTips', 50, screenWidth,0),
                   SizedBox(height: screenWidth < 600 ? 30 : null,width: screenWidth < 600 ? null : 30,),
-                  projectCard('assets/timetable.png', 'Timetable Generator', 'Spring Framework, Java, JavaScript, Bootstrap', 'https://github.com/Chanakya-Srinivas/FingerTips',50,screenWidth,1),
+                  projectCard('assets/timetable.png', 'assets/timetable2.png', 'Timetable Generator', 'Designed and implemented a web application that replaces the manual creation of class and faculty timetables with a smart and efficient method. The admin can log in, manage faculty load, align subjects based on experience, and generate timetables they can also schedule events based on available time slots for faculty and students.', 'Spring Framework, Java, JavaScript, Bootstrap', 'https://github.com/Chanakya-Srinivas/FingerTips',50,screenWidth,1),
                 ],
               ),
               SizedBox(height: screenWidth < 900 ? 30 : null,width: screenWidth < 900 ? null : screenWidth*0.005,),
@@ -83,9 +122,9 @@ class _Projects extends State<Projects>{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 direction: screenWidth < 600 ? Axis.vertical : Axis.horizontal,
                 children: [
-                  projectCard('assets/database.png', 'SQL Data Storage Management System', 'C, Data Structures & Algorithms', 'https://github.com/Chanakya-Srinivas/FingerTips',50,screenWidth,2),
+                  projectCard('assets/database.png', 'assets/database2.png', 'SQL Data Storage Management System', 'Implemented an SQL Data Storage Manager capable of maintaining tables in a file using a B+ tree. It can access records of a table through a buffer pool and perform basic SQL operations on a table.', 'C, Data Structures & Algorithms', 'https://github.com/Chanakya-Srinivas/FingerTips',50,screenWidth,2),
                   SizedBox(height: screenWidth < 600 ? 30 : null,width: screenWidth < 600 ? null : 30,),
-                  projectCard('assets/timetable.png', 'projectName', 'languages', 'url',50,screenWidth,3),
+                  projectCard('assets/timetable.png', 'assets/timetable2.png', 'projectName', '', 'languages', 'url',50,screenWidth,3),
                 ],
               ),
               const SizedBox(height: 30,),

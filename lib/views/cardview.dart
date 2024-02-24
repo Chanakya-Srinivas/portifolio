@@ -15,7 +15,10 @@ class CardView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     bool check = MediaQuery.sizeOf(context).width < 1000 ;
-    return Container(
+    return InkWell(
+      onTap: () {
+      },
+      child: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
           color: Color.fromARGB(255, 227, 231, 233)
@@ -47,7 +50,8 @@ class CardView extends StatelessWidget{
             if(!check && !align)
               const SizedBox(width: 30,),
         ],)
-      );
+      ),
+    );
   }
 
 }
